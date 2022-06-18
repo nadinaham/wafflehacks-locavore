@@ -1,3 +1,6 @@
+<img width="1416" alt="locavore_frontend" src="https://user-images.githubusercontent.com/8853022/174446933-740ae238-d06c-427f-9e1c-bd3fd2ed796d.png">
+
+
 # DEV React-Apollo Starter
 
 ### Getting Started
