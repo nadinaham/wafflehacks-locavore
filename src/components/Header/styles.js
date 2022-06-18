@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  position: relative;
-  height: 12vh;
+  background: #D0DFE2;
+  position: sticky;
+  height: 14vh;
   width: 100vw;
   top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2%;
   @media (max-width: 500px) {
       box-sizing: border-box;
   }
@@ -32,14 +32,13 @@ export const Container = styled.div`
 //     }
 // `
 export const SubContainer = styled.div`
-  height: 15vh;
+  height: 14vh;
   top: 0;
   right: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-right: 8.32vw;
   @media (max-width: 449px) {
       display:flex;
       flex-direction: column;
@@ -57,7 +56,7 @@ export const StyledRectangle = styled.div`
     }
 `
 
-export const Logo = styled.img`
+export const Logo1 = styled.img`
   margin-left: 7.5%;
   width: 20%;
   min-height: 20px;

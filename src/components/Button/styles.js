@@ -3,6 +3,7 @@ import theme from '../../theme'
 
 export const ButtonBox = styled.button`
   width: ${props => props.width};
+  margin-right: 20px;
   height: ${props => props.height};
   background-color: #AF6E0C;
   border: none;
