@@ -167,3 +167,13 @@ table {
 	font-family: 'Jost Semibold';
 	src: local('Jost Semibold'), url(./fonts/Jost/static/Jost-SemiBold.ttf) format('truetype');
 }
+
+@font-face {
+	font-family: 'Cinderela';
+	src: local('Cinderela'), url(./fonts/Cinderela/Cinderela_Personal_Use.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Khanza';
+	src: local('Khanza'), url(./fonts/Khanza/Khanza.otf) format('truetype');
+}

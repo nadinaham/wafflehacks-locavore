@@ -6,12 +6,12 @@ import {
   Logo1,
 } from './styles'
 import Button from '../Button'
-import Logo from '../../assets/Logo.svg'
+import MASSIVE_L from '../../assets/MASSIVE_L.png'
 import Modal from '../Modal'
 import theme from '../../theme'
 
 const Header = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false)
+  const [isLoggedIn, setLoggedIn] = useState(true)
   const [loginVis, setLoginVis] = useState(false)
   const [signUpVis, setSignUpVis] = useState(false)
 
@@ -28,7 +28,7 @@ const Header = () => {
     <>
       <Modal
         visible={loginVis}
-        closeFunc={() => setLoginVis(false)}
+        closeFunc={() => setLoginVis(true)}
       >
         <div style={{ fontFamily: 'Jost' }}>
         login
@@ -51,11 +51,14 @@ const Header = () => {
         </div>
       </Modal>
       <Container>
-        <div style={{paddingBottom: '1%'}}>
-        <Logo1
-          src={Logo}
-          alt="WH Logo"
-        />
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <div style={{ marginLeft: '3vh', width: '7vh', backgroundColor: 'pink', paddingTop: '3%', height: '12vh' }}>
+            <Logo1
+              src={MASSIVE_L}
+              alt="WH Logo"
+            />
+          </div>
+          <span style={{ paddingTop: '3vh', fontSize: '40px', fontFamily: 'Jost Semibold' }}>ocavore</span>
         </div>
         <SubContainer>
           {isLoggedIn ? (

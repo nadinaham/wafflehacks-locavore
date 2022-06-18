@@ -29,6 +29,8 @@ const errorLink = onError(() => {
   //   e.g. redirect to login on AuthenticationError
 })
 
+export const cache = new InMemoryCache()
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: ApolloLink.from([

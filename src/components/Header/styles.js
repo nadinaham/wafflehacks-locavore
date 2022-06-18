@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   background: #D0DFE2;
   position: sticky;
-  height: 14vh;
+  height: 18vh;
   width: 100vw;
   top: 0;
   display: flex;
@@ -58,10 +58,10 @@ export const StyledRectangle = styled.div`
 
 export const Logo1 = styled.img`
   margin-left: 7.5%;
-  width: 20%;
-  min-height: 20px;
-  min-width: 150px;
+  width: 100%;
+  height: auto;
   background: ${props => props.background};
+  object-fit: contain;
 `
 
 export const Seperator = styled.div`

@@ -3,9 +3,8 @@ import theme from '../../theme'
 
 export const ButtonBox = styled.button`
   width: ${props => props.width};
-  margin-right: 20px;
   height: ${props => props.height};
-  background-color: #AF6E0C;
+  background-color: #965829;
   border: none;
   border-radius: 5px;
   @media (max-width: 449px) {

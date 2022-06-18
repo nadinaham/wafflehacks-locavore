@@ -1,23 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
+import { persistCache } from 'apollo-cache-persist'
 import { ThemeProvider } from 'styled-components'
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
+import client, { cache } from './client'
 import theme from './theme'
-import client from './client'
-import Home from './containers/Home'
+import AppRouter from './routes/AppRouter'
+import history from './history'
 
-const App = () => (
-  <Router>
-    <ThemeProvider theme={theme}>
-      <ApolloProvider client={client}>
-        <div className="App">
-          <Switch>
-            <Route path="/" component={Home} />
-          </Switch>
-        </div>
-      </ApolloProvider>
-    </ThemeProvider>
-  </Router>
-)
+const App = () => {
+  const [apolloClient, setApolloClient] = useState(undefined)
+
+  useEffect(() => {
+    persistCache({
+      cache,
+      storage: window.localStorage,
+    }).then(() => {
+      setApolloClient(client)
+    })
+    return () => {}
+  }, [])
+
+  if (apolloClient === undefined) return null
+
+  return (
+    <Router history={history}>
+      <ThemeProvider theme={theme}>
+        <ApolloProvider client={apolloClient}>
+          <AppRouter />
+        </ApolloProvider>
+      </ThemeProvider>
+    </Router>
+  )
+}
 
 export default App

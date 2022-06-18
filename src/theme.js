@@ -17,6 +17,8 @@ const theme = {
     rubikBold: 'Rubik Bold',
     jost: 'Jost',
     jostSemi: 'Jost Semibold',
+    cinderela: 'Cinderela',
+    khanza: 'Khanza',
   },
 }
 
