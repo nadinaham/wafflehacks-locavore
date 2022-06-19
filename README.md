@@ -17,3 +17,6 @@ Then, to launch the program, type **npm run dev** into your terminal to launch t
 
 
 The default/master branch contains the frontend code / what the website looks like to its users. The backend-fn branch contains our backend code, which isn't integrated at the moment due to some framework incompatibilities with the frontend. The backend code includes mutations for registering, logging in, fielding business order submissions, and loading user/business data. It also includes an API recommendation system coded in Flask by our team that takes a users' visited businesses and generates a list of recommended businesses for them to render in the "for me" tab on the customer end.
+
+
+**DISCLAIMER: Part of the frontend was referenced from a template created by HSA DEV (https://github.com/hsadev/bootcamp-web-starter), which helped with installing the necessary dependencies and configuring the website to launch properly. None of the actual frontend that can be seen from launching the app in the terminal came from this template.**
