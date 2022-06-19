@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://lslcvsdw:bElQeDQnJwvsXUPnqkW9LMilIRvHcoTZ@raja.db.elephantsql.com:5432/lslcvsdw"
+}
+
+model businesses {
+  id         BigInt       @id @default(autoincrement())
+  name       String?      @default("Biz")
+  email      String       @unique @db.VarChar(319)
+  password   String       @db.VarChar(255)
+  orders     orders[]
+  punchcards punchcards[]
+}
+
+model knex_migrations {
+  id             Int       @id @default(autoincrement())
+  name           String?   @db.VarChar(255)
+  batch          Int?
+  migration_time DateTime? @db.Timestamptz(6)
+}
+
+model knex_migrations_lock {
+  index     Int  @id @default(autoincrement())
+  is_locked Int?
+}
+
+model orders {
+  id         BigInt      @id @default(autoincrement())
+  user_id    String?     @db.Uuid
+  biz_id     BigInt?
+  businesses businesses? @relation(fields: [biz_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "biz_id")
+  users      users?      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+}
+
+model punchcards {
+  id         BigInt      @id @default(autoincrement())
+  user_id    String?     @db.Uuid
+  biz_id     BigInt?
+  punches    Int?        @default(0)
+  businesses businesses? @relation(fields: [biz_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "biz_id")
+  users      users?      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+}
+
+model users {
+  id         String       @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  email      String       @unique(map: "users_email_unique") @db.VarChar(319)
+  password   String       @db.VarChar(255)
+  createdAt  DateTime?    @default(now()) @db.Timestamptz(6)
+  updatedAt  DateTime?    @default(now()) @db.Timestamptz(6)
+  firstName  String
+  lastName   String
+  orders     orders[]
+  punchcards punchcards[]
+}

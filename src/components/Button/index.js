@@ -10,7 +10,7 @@ const Button = ({
   <ButtonBox
     width={width}
     height={height}
-    onClick={() => onClick()}
+    onClick={() => this.onClick()}
   >
     <ButtonText style={{ cursor: 'pointer' }}>
       {text}
