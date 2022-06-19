@@ -5,6 +5,7 @@ import {
   SubContainer,
   Logo1,
   Icon,
+  DisplayName,
 } from './styles'
 import Button from '../Button'
 import LOGOSHORT from '../../assets/LOGOSHORT.png'
@@ -15,6 +16,7 @@ const Header = ({
   isRec,
 }) => {
   const [isLoggedIn, setLoggedIn] = useState(true)
+  const [isBiz, setIsBiz] = useState(true)
   const [loginVis, setLoginVis] = useState(false)
   const [signUpVis, setSignUpVis] = useState(false)
   const history = useHistory()
@@ -59,32 +61,53 @@ const Header = ({
       </Modal>
       <Container>
         <Icon onClick={() => goTo('home')} style={{ display: 'flex', flexDirection: 'row' }}>
-          <span style={{
-            marginLeft: 70, paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white',
-          }}
-          >
+          {
+            isBiz ? (
+              <>
+              <div style={{ marginLeft: 70, width: '12vh', height: '12vh' }}>
+                <Logo1
+                  src={LOGOSHORT}
+                  alt="WH Logo"
+                />
+              </div>
+              <DisplayName>@ExampleBiz</DisplayName>
+              </>
+            )
+              : (
+                <>
+                  <span style={{
+                    marginLeft: 70, paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white',
+                  }}
+                  >
             Loca
-          </span>
-          <div style={{ width: '12vh', height: '12vh' }}>
-            <Logo1
-              src={LOGOSHORT}
-              alt="WH Logo"
-            />
-          </div>
-          <span style={{
-            paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white',
-          }}
-          >
+                  </span>
+                  <div style={{ width: '12vh', height: '12vh' }}>
+                    <Logo1
+                      src={LOGOSHORT}
+                      alt="WH Logo"
+                    />
+                  </div>
+                  <span style={{
+                    paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white',
+                  }}
+                  >
             ore
-          </span>
+                  </span>
+                </>
+              )
+          }
+
         </Icon>
         <SubContainer>
           {isLoggedIn ? (
             <>
-              <span style={{ marginLeft: 20, marginRight: 20 }}>
-                {isRec ? (<Button text="my punches" width="20vh" height="6vh" onClick={() => goTo('home')} />)
-                  : (<Button text="for me" width="15vh" height="6vh" onClick={() => goTo('recs')} />)}
-              </span>
+              { isBiz ? (<></>)
+                : (
+                  <span style={{ marginLeft: 20, marginRight: 20 }}>
+                    {isRec ? (<Button text="my punches" width="20vh" height="6vh" onClick={() => goTo('home')} />)
+                      : (<Button text="for me" width="15vh" height="6vh" onClick={() => goTo('recs')} />)}
+                  </span>
+                )}
               <span style={{ marginRight: 70 }}>
                 <Button text="log out" width="15vh" height="6vh" onClick={console.log('log out')} />
               </span>

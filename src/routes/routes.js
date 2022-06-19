@@ -5,6 +5,7 @@ import { ROUTE_PATHS } from '../utils/constants'
 import Home from '../containers/Home'
 import Landing from '../containers/Landing'
 import UserFor from '../containers/UserFor'
+import Order from '../containers/Order'
 
 export const routes = {
   home: {
@@ -24,7 +25,13 @@ export const routes = {
     routeComponent: PublicRoute,
     component: UserFor,
     exact: true,
-  }
+  },
+  order: {
+    path: ROUTE_PATHS.ORDER,
+    routeComponent: PublicRoute,
+    component: Order,
+    exact: true,
+  },
 }
 
 export const renderRoutes = Object.entries(routes)

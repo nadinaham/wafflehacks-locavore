@@ -75,7 +75,27 @@ export const EntryBox = styled.div`
   margin: 0 auto;
   max-height: 70vh;
   z-index: 10;
-  background-color: rgba(255,255,255,0.75)
+  background-color: rgba(255,255,255,0.75);
+`
+
+export const EntryBox2 = styled.div`
+  padding: 3vh;
+  position: absolute;
+  top: 27vh;
+  right: 10vw;
+  min-width: 80vw;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-height: 70vh;
+  z-index: 10;
+`
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 export const Entry = styled.div`
@@ -116,4 +136,28 @@ margin-left: 7vh;
 margin-top: 1vh;
 
 color: #7F5130;
+`
+
+export const Click = styled.div`
+cursor: pointer;
+`
+
+export const BizBox = styled.div`
+padding: 3vh;
+margin-top: 3vh;
+margin-right: auto;
+margin-left: auto;
+width: 60vw;
+height: fit-content;
+
+background: #7F5130;
+border-radius: 5px;
+`
+
+export const Subtitle2 = styled.p`
+  width: 35vw;
+  font-family: ${theme.fonts.jost};
+  text-align: left;
+  font-size: 20px;
+  color: ${theme.colors.peach}
 `
