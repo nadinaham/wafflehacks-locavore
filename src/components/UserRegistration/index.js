@@ -28,6 +28,7 @@ const UserRegistration = () => {
       password: '',
       passwordConfirmation: '',
     },
+    // I THINK this validation should work...
     validationSchema: Yup.object({
       firstName: Yup.string()
         .max(20, 'Must be 20 characters or less')

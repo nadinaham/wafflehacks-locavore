@@ -1,28 +1,73 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-const { register, handleSubmit } = useForm();
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import Button from '../../Button'
 
 import { PrismaClient } from '@prisma/client'
-
 prisma = new PrismaClient()
 
 async function find_user(data) {
-  const user = await prisma.users.findUnique({where :
-                     {email: {equals: email}},
-                    })
-  console.log(user)
-}
+    const user = await prisma.users.findUnique({where :
+                       {email: {equals: data.email}},
+                      })
+    console.log(user)
+  }
 
-<form onSubmit={handleSubmit(data => find_user(data))}>
-    <h1>Log in</h1>
-    <label>Name</label>
-    <input name="name" ref={register} />
-    <label>Address</label>
-    <input name="address" ref={register} />
-    <label>Date</label>
-    <input name="date" ref={register} />
-    <label>Order Number</label>
-    <input name="order" ref={register} />
-    <input type="submit" /> 
-</form>
+
+const UserLogin = () => {
+    const formik = useFormik({
+      initialValues: {
+        email: '',
+        password: '',
+      },
+      // I THINK this validation should work...
+      // TODO auth error if can't find
+      validationSchema: Yup.object({
+        email: Yup.string()
+          .email('Invalid email address')
+          .required('Required'),
+        password: Yup.string()
+          .required('Required'),
+      }),
+      onSubmit: values => {
+        find_user(JSON.stringify(values, null, 2))
+        .catch((e) => {
+          throw e
+        })
+        .finally(async () => {
+          await prisma.$disconnect()
+        });
+      },
+    });
+    return (
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="email">Email Address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+        />
+        {formik.touched.email && formik.errors.email ? (
+          <div>{formik.errors.email}</div>
+        ) : null}
+  
+      <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+        />
+        {formik.touched.password && formik.errors.password ? (
+          <div>{formik.errors.password}</div>
+        ) : null}
+  
+        <Button type="submit" text="let's go!" width="13vh" height="5.5vh" onClick={console.log('submitted')}></Button>
+      </form>
+    );
+  };
