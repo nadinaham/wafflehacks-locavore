@@ -62,3 +62,58 @@ export const Box = styled.div`
   width: fit-content;
   border-radius: 19px;
 `
+
+export const EntryBox = styled.div`
+  padding: 3vh;
+  position: absolute;
+  top: 27vh;
+  right: 10vw;
+  min-width: 80vw;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-height: 70vh;
+  z-index: 10;
+  background-color: rgba(255,255,255,0.75)
+`
+
+export const Entry = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 60vw;
+  z-index: 10;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+`
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const BizTitle = styled.p`
+margin-left: 7vh;
+margin-top: 1vh;
+min-width: 60vw;
+font-family: 'Jost Semibold';
+font-style: normal;
+font-weight: 600;
+font-size: 5vh;
+line-height: 90%;
+
+color: #7F5130;
+`
+
+export const BizSubTitle = styled.p`
+  font-family: 'Jost';
+  max-width: 60vw;
+font-style: normal;
+font-weight: 400;
+font-size: 2vh;
+line-height: 3vh;
+margin-left: 7vh;
+margin-top: 1vh;
+
+color: #7F5130;
+`

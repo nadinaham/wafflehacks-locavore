@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 import Button from '../../components/Button'
-import Modal from '../../components/Modal'
 import LogoFull from '../../assets/LogoFull.png'
 import cat1 from '../../assets/cat1.png'
-import { MiddleContainer, BrownContainer, Logo1, Logo2, Title, Box, Subtitle, } from './styles'
+import WaffleCard from '../../components/Waffle'
+
+import {
+  MiddleContainer, Column, BizTitle, BizSubTitle, EntryBox, Entry, BrownContainer, Logo1, Logo2, Title, Box, Subtitle,
+} from './styles'
+import ProgressBar from '../../components/ProgressBar'
 
 const Home = () => {
-  const [modalVis, setModalVis] = useState(false)
+  const [isBiz, setIsBiz] = useState(false)
   const [data, setData] = useState('')
+  const [count, setCount] = useState(6)
   const history = useHistory()
+
+  const complete = count => {
+    console.log(count / 8)
+    return (count / 8) * 100
+  }
+
   const goTo = string => {
     history.push('/'.concat(string))
   }
@@ -29,27 +39,56 @@ const Home = () => {
               alt="WH Logo"
             />
           </div>
-          { data ? (
+          { true ? (
             <>
+              <EntryBox>
+                <Entry>
+                  <WaffleCard count={1} />
+                  <Column>
+                    <BizTitle>
+                        Example Business 1
+                    </BizTitle>
+                    <BizSubTitle>
+                        Example reward milestone progress.
+                      <p>Address of business.</p>
+                    </BizSubTitle>
+                    <ProgressBar completed={complete(1)} number={1} />
+                  </Column>
+                </Entry>
+                <Entry>
+                  <WaffleCard count={4} />
+                  <Column>
+                    <BizTitle>
+                        Example Business 2
+                    </BizTitle>
+                    <BizSubTitle>
+                        Example reward milestone progress.
+                      <p>Address of business.</p>
+                    </BizSubTitle>
+                    <ProgressBar completed={complete(4)} number={4} />
+
+                  </Column>
+                </Entry>
+              </EntryBox>
             </>
           )
             : (
               <>
                 <BrownContainer>
-                <Box>
+                  <Box>
                     <Title>
                         uh oh!
                     </Title>
-                </Box>
-                    <Subtitle>
+                  </Box>
+                  <Subtitle>
                     looks like you aren't participating in any rewards programs!
-                    </Subtitle>
-                    <Logo2
-              src={cat1}
-              alt="a cat lol"
-            />
-                <span style={{margin: '2vh auto' }}>
-                  <Button width='30vh' text="get started?" onClick={() => goTo('recs')} />
+                  </Subtitle>
+                  <Logo2
+                    src={cat1}
+                    alt="a cat lol"
+                  />
+                  <span style={{ margin: '2vh auto' }}>
+                    <Button width="30vh" text="get started?" onClick={() => goTo('recs')} />
                   </span>
                 </BrownContainer>
               </>

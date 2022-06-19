@@ -59,6 +59,7 @@ export const VerticalBox = styled.div`
   height: 36vh;
   display: flex;
   justify-content: center;
+  margin-bottom: 3vh;
   
   background: #C6A590;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -79,6 +80,11 @@ export const SubVerticalBox = styled.div`
 `
 
 export const HorizontalBox = styled.div`
+  padding-top: 2vh;
+  padding-left: 3vh;
+  align-items: right;
+  display: flex;
+  flex-direction: column;
   width: 32vw;
   height: 95px;
   margin-bottom: 3vh;
@@ -125,7 +131,28 @@ export const Title = styled.p`
   font-size: 8vh;
   line-height: 90%;
 
-  color: #FFFFFF;
+  color: ${props => props.color};
+`
+
+export const Title3 = styled.p`
+  font-family: 'Jost Semibold';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 90%;
+
+  color: #7F5130;
+`
+
+export const Subtitle2 = styled.p`
+  font-family: 'Jost';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 90%;
+margin-top: 1vh;
+
+color: #7F5130;
 `
 
 export const Subtitle = styled.p`

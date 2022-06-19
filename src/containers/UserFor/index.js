@@ -4,8 +4,8 @@ import theme from '../../theme'
 import LogoRev from '../../assets/LogoRev.png'
 import Header from '../../components/Header'
 import {
-    BrownContainer, Logo2, Title, Box, Subtitle,
-  Container, Title2, SubContainer, Column, Logo, Logo5, Logo3, Logo4, Logo6, Line, Row, HorizontalBox, HorizontalBox2, SubVerticalBox, VerticalBox,
+  BrownContainer, Logo2, Title, Box, Subtitle,
+  Container, Title2, SubContainer, Column, Logo, Title3, Subtitle2, Logo3, Logo4, Logo6, Line, Row, HorizontalBox, HorizontalBox2, SubVerticalBox, VerticalBox,
 } from './styles'
 import cat2 from '../../assets/cat2.png'
 import shop1 from '../../assets/shop1.png'
@@ -31,7 +31,7 @@ const UserFor = () => {
           </div>
           <Container>
             <div style={{ width: '100%' }}>
-              <Title>
+              <Title color='white'>
             my recommended:
               </Title>
               <Line />
@@ -41,27 +41,34 @@ const UserFor = () => {
                 {data
                   ? (
                     <>
-                      <HorizontalBox color={theme.colors.white} />
+                      <HorizontalBox color={theme.colors.white}>
+                        <Title3>
+                            Business 1
+                        </Title3>
+                        <Subtitle2>
+                            This is the description for Business 1, including what they sell, where they are, etc.
+                        </Subtitle2>
+                      </HorizontalBox>
                       <HorizontalBox color={theme.colors.peach} />
                       <HorizontalBox color={theme.colors.milkChoco} />
-)
                     </>
                   )
                   : (
-                  <BrownContainer>
-                <Box>
-                    <Title2>
+                    <BrownContainer>
+                      <Box>
+                        <Title2>
                         uh oh!
-                    </Title2>
-                </Box>
-                    <Subtitle>
-                    looks like you don't have any recs! to generate some, go out and purchase from small businesses with locavore to enter their rewards program!
-                    </Subtitle>
-                    <Logo6
+                        </Title2>
+                      </Box>
+                      <Subtitle>
+                    looks like you don't have any recs! to generate some, go out and purchase from small businesses partnered with locavore to enter their rewards program!
+                      </Subtitle>
+                      <Logo6
                         src={cat3}
                         alt="anotha cat"
                       />
-                </BrownContainer>)}
+                    </BrownContainer>
+                  )}
 
               </Column>
               <div style={{ marginRight: '5vw' }}>
