@@ -1,11 +1,11 @@
-import React from "react";
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import React from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import Button from '../../Button'
 
-export const getServerSideProps = async (data) => {
-    const res = await fetch("http://localhost:5000/api/newuser");
-    console.log("new user created");
+export const getServerSideProps = async data => {
+  const res = await fetch('http://localhost:5000/api/newuser')
+  console.log('new user created')
 }
 
 const UserRegistration = () => {
@@ -33,18 +33,18 @@ const UserRegistration = () => {
         .max(255, 'Must be 255 characters or less')
         .required('Required'),
       passwordConfirmation: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .oneOf([Yup.ref('password'), null], 'Passwords must match'),
     }),
     onSubmit: values => {
       create_user(JSON.stringify(values, null, 2))
-      .catch((e) => {
-        throw e
-      })
-      .finally(async () => {
-        await prisma.$disconnect()
-      });
+        .catch(e => {
+          throw e
+        })
+        .finally(async () => {
+          await prisma.$disconnect()
+        })
     },
-  });
+  })
   return (
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="firstName">First Name</label>
@@ -86,7 +86,7 @@ const UserRegistration = () => {
         <div>{formik.errors.email}</div>
       ) : null}
 
-    <label htmlFor="password">Password</label>
+      <label htmlFor="password">Password</label>
       <input
         id="password"
         name="password"
@@ -97,9 +97,9 @@ const UserRegistration = () => {
       />
       {formik.touched.password && formik.errors.password ? (
         <div>{formik.errors.password}</div>
-      ) : null} 
+      ) : null}
 
-    <label htmlFor="password">Confirm Password</label>
+      <label htmlFor="password">Confirm Password</label>
       <input
         id="passwordConfirmation"
         name="passwordConfirmation"
@@ -110,9 +110,11 @@ const UserRegistration = () => {
       />
       {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation ? (
         <div>{formik.errors.passwordConfirmation}</div>
-      ) : null} 
+      ) : null}
 
-      <Button type="submit" text="let's go!" width="13vh" height="5.5vh" onClick={console.log('submitted')}></Button>
+      <Button type="submit" text="let's go!" width="13vh" height="5.5vh" onClick={console.log('submitted')} />
     </form>
-  );
-};
+  )
+}
+
+export default UserRegistration 

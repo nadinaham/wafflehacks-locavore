@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
 import theme from '../../theme'
 import { Center, Logo1 } from './styles'
 import LogoRev from '../../assets/LogoRev.png'
 
+
+
 const Landing = () => {
-  const [modalVis, setModalVis] = useState(false)
+  const history = useHistory()
+  const goTo = string => {
+    history.push('/'.concat(string))
+  }
   return (
     (
       <div style={{
@@ -29,9 +35,9 @@ const Landing = () => {
           >
             <div style={{ margin: '0 auto' }}>
               <span style={{ marginLeft: 20, marginRight: 10 }}>
-                <Button text="sign up" width="13vh" height="5.5vh" onClick={console.log('hi')} />
+                <Button text="sign up" width="13vh" height="5.5vh" onClick={goTo('signup')} />
               </span>
-              <Button text="log in" width="13vh" height="5.5vh" onClick={console.log('hi')} />
+              <Button text="log in" width="13vh" height="5.5vh" onClick={goTo('login')} />
             </div>
           </div>
         </Center>
