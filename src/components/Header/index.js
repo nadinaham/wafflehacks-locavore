@@ -10,18 +10,23 @@ import {
 import Button from '../Button'
 import LOGOSHORT from '../../assets/LOGOSHORT.png'
 import Modal from '../Modal'
-import theme from '../../theme'
 
 const Header = ({
-  isRec,
+  isRec, isBiz,
 }) => {
   const [isLoggedIn, setLoggedIn] = useState(true)
-  const [isBiz, setIsBiz] = useState(true)
   const [loginVis, setLoginVis] = useState(false)
   const [signUpVis, setSignUpVis] = useState(false)
   const history = useHistory()
   const goTo = string => {
     history.push('/'.concat(string))
+  }
+
+  const handleSubmit = bool => {
+    history.push({
+      pathname: '/home',
+      state: bool,
+    })
   }
 
   const handleSwitch = () => {
@@ -60,7 +65,7 @@ const Header = ({
         </div>
       </Modal>
       <Container>
-        <Icon onClick={() => goTo('home')} style={{ display: 'flex', flexDirection: 'row' }}>
+        <Icon onClick={() => handleSubmit(isBiz)} style={{ display: 'flex', flexDirection: 'row' }}>
           {
             isBiz ? (
               <>
@@ -109,7 +114,7 @@ const Header = ({
                   </span>
                 )}
               <span style={{ marginRight: 70 }}>
-                <Button text="log out" width="15vh" height="6vh" onClick={console.log('log out')} />
+                <Button text="log out" width="15vh" height="6vh" onClick={() => goTo('')} />
               </span>
             </>
           ) : (

@@ -66,10 +66,11 @@ export const Box = styled.div`
 export const EntryBox = styled.div`
   padding: 3vh;
   position: absolute;
-  top: 27vh;
+  top: 33vh;
   right: 10vw;
   min-width: 80vw;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   margin: 0 auto;

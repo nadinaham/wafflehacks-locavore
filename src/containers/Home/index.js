@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 import LogoFull from '../../assets/LogoFull.png'
 import cat1 from '../../assets/cat1.png'
+import cat4 from '../../assets/cat4.png'
 import WaffleCard from '../../components/Waffle'
 
 import {
@@ -11,8 +12,14 @@ import {
 } from './styles'
 import ProgressBar from '../../components/ProgressBar'
 
-const Home = () => {
-  const [isBiz, setIsBiz] = useState(true)
+const Home = props => {
+  const location = useLocation()
+  const [isBiz, setIsBiz] = useState(false)
+
+  useEffect(() => {
+    if (location.state) { setIsBiz(location.state) } // result: 'some_value'
+  }, [location])
+
   const [data, setData] = useState('')
   const [count, setCount] = useState(6)
   const history = useHistory()
@@ -28,7 +35,7 @@ const Home = () => {
   return (
     (
       <div style={{ position: 'relative' }}>
-        <Header isRec={false} />
+        <Header isBiz={isBiz} isRec={false} />
         <MiddleContainer>
           <div style={{
             zIndex: -100, marginRight: 'auto', marginLeft: 'auto',
@@ -70,10 +77,10 @@ const Home = () => {
           ) : (
             <>
               { data ? (
-                <>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <EntryBox>
                     <Entry>
-                      <WaffleCard count={1} />
+                      <WaffleCard count={2} />
                       <Column>
                         <BizTitle>
                         Example Business 1
@@ -82,7 +89,7 @@ const Home = () => {
                         Example reward milestone progress.
                           <p>Address of business.</p>
                         </BizSubTitle>
-                        <ProgressBar completed={complete(1)} number={1} />
+                        <ProgressBar completed={complete(2)} number={2} />
                       </Column>
                     </Entry>
                     <Entry>
@@ -100,7 +107,7 @@ const Home = () => {
                       </Column>
                     </Entry>
                   </EntryBox>
-                </>
+                </div>
               )
                 : (
                   <>
@@ -116,6 +123,7 @@ const Home = () => {
                       <Logo2
                         src={cat1}
                         alt="a cat lol"
+                        onClick={() => setData(true)}
                       />
                       <span style={{ margin: '2vh auto' }}>
                         <Button width="30vh" text="get started?" onClick={() => goTo('recs')} />

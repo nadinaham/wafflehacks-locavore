@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
 import theme from '../../theme'
@@ -7,6 +8,15 @@ import LogoRev from '../../assets/LogoRev.png'
 
 const Landing = () => {
   const [modalVis, setModalVis] = useState(false)
+  const history = useHistory()
+
+  const handleSubmit = bool => {
+    history.push({
+      pathname: '/home',
+      state: bool,
+    })
+  }
+
   return (
     (
       <div style={{
@@ -29,9 +39,9 @@ const Landing = () => {
           >
             <div style={{ margin: '0 auto' }}>
               <span style={{ marginLeft: 20, marginRight: 10 }}>
-                <Button text="sign up" width="13vh" height="5.5vh" onClick={console.log('hi')} />
+                <Button text="customer" width="13vh" height="5.5vh" onClick={() => handleSubmit(false)} />
               </span>
-              <Button text="log in" width="13vh" height="5.5vh" onClick={console.log('hi')} />
+              <Button text="business" width="13vh" height="5.5vh" onClick={() => handleSubmit(true)} />
             </div>
           </div>
         </Center>

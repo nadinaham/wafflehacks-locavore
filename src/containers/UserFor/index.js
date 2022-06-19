@@ -14,7 +14,7 @@ import shop3 from '../../assets/shop3.png'
 import cat3 from '../../assets/cat3.png'
 
 const UserFor = () => {
-  const [data, setData] = useState('')
+  const [data, setData] = useState(false)
   return (
     (
       <div style={{
@@ -27,6 +27,7 @@ const UserFor = () => {
             <Logo
               src={cat2}
               alt="a cat lol"
+              onClick={() => setData(!data)}
             />
           </div>
           <Container>
