@@ -1,19 +1,28 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import {
   Container,
   SubContainer,
   Logo1,
+  Icon,
+  DisplayName,
 } from './styles'
 import Button from '../Button'
-import MASSIVE_L from '../../assets/MASSIVE_L.png'
+import LOGOSHORT from '../../assets/LOGOSHORT.png'
 import Modal from '../Modal'
 import theme from '../../theme'
 
-const Header = () => {
+const Header = ({
+  isRec,
+}) => {
   const [isLoggedIn, setLoggedIn] = useState(true)
+  const [isBiz, setIsBiz] = useState(true)
   const [loginVis, setLoginVis] = useState(false)
   const [signUpVis, setSignUpVis] = useState(false)
+  const history = useHistory()
+  const goTo = string => {
+    history.push('/'.concat(string))
+  }
 
   const handleSwitch = () => {
     setLoginVis(false)
@@ -51,20 +60,57 @@ const Header = () => {
         </div>
       </Modal>
       <Container>
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-          <div style={{ marginLeft: '3vh', width: '7vh', backgroundColor: 'pink', paddingTop: '3%', height: '12vh' }}>
-            <Logo1
-              src={MASSIVE_L}
-              alt="WH Logo"
-            />
-          </div>
-          <span style={{ paddingTop: '3vh', fontSize: '40px', fontFamily: 'Jost Semibold' }}>ocavore</span>
-        </div>
+        <Icon onClick={() => goTo('home')} style={{ display: 'flex', flexDirection: 'row' }}>
+          {
+            isBiz ? (
+              <>
+              <div style={{ marginLeft: 70, width: '12vh', height: '12vh' }}>
+                <Logo1
+                  src={LOGOSHORT}
+                  alt="WH Logo"
+                />
+              </div>
+              <DisplayName>@ExampleBiz</DisplayName>
+              </>
+            )
+              : (
+                <>
+                  <span style={{
+                    marginLeft: 70, paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white',
+                  }}
+                  >
+            Loca
+                  </span>
+                  <div style={{ width: '12vh', height: '12vh' }}>
+                    <Logo1
+                      src={LOGOSHORT}
+                      alt="WH Logo"
+                    />
+                  </div>
+                  <span style={{
+                    paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white',
+                  }}
+                  >
+            ore
+                  </span>
+                </>
+              )
+          }
+
+        </Icon>
         <SubContainer>
           {isLoggedIn ? (
             <>
-              <Button text="profile" width="90px" height="37px" onClick={console.log('hi')} />
-              <Button text="log out" width="90px" height="37px" onClick={console.log('hi')} />
+              { isBiz ? (<></>)
+                : (
+                  <span style={{ marginLeft: 20, marginRight: 20 }}>
+                    {isRec ? (<Button text="my punches" width="20vh" height="6vh" onClick={() => goTo('home')} />)
+                      : (<Button text="for me" width="15vh" height="6vh" onClick={() => goTo('recs')} />)}
+                  </span>
+                )}
+              <span style={{ marginRight: 70 }}>
+                <Button text="log out" width="15vh" height="6vh" onClick={console.log('log out')} />
+              </span>
             </>
           ) : (
             <>

@@ -6,6 +6,8 @@ import Home from '../containers/Home'
 import Landing from '../containers/Landing'
 import UserLogin from '../components/UserLogin'
 import UserRegistration from '../components/UserRegistration'
+import UserFor from '../containers/UserFor'
+import Order from '../containers/Order'
 
 export const routes = {
   home: {
@@ -30,8 +32,19 @@ export const routes = {
     path: ROUTE_PATHS.SIGNUP,
     routeComponent: PublicRoute,
     component: UserRegistration,
+  userFor: {
+    path: ROUTE_PATHS.USERFOR,
+    routeComponent: PublicRoute,
+    component: UserFor,
     exact: true,
   },
+  order: {
+    path: ROUTE_PATHS.ORDER,
+    routeComponent: PublicRoute,
+    component: Order,
+    exact: true,
+  },
+}
 }
 
 export const renderRoutes = Object.entries(routes)
