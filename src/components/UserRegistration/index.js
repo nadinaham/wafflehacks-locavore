@@ -3,20 +3,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Button'
 
-import { PrismaClient } from '@prisma/client'
-
-prisma = new PrismaClient()
-
-async function create_user(data) {
-const user = await prisma.user.create({
-    data: { 
-        email: data.email,
-        password: data.password,
-        firstName: data.firstName,
-        lastName: data.lastName,
-    },
-    })
-  console.log(user)
+export const getServerSideProps = async (data) => {
+    const res = await fetch("http://localhost:5000/api/newuser");
+    console.log("new user created");
 }
 
 const UserRegistration = () => {
