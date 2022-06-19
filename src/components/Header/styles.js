@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import theme from '../../theme'
 
+export const Icon = styled.div`
+  cursor: pointer;
+`
+
 export const Container = styled.div`
   background: ${theme.colors.milkChoco};
   position: sticky;

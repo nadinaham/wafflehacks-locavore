@@ -4,6 +4,7 @@ import {
   Container,
   SubContainer,
   Logo1,
+  Icon,
 } from './styles'
 import Button from '../Button'
 import LOGOSHORT from '../../assets/LOGOSHORT.png'
@@ -57,7 +58,7 @@ const Header = ({
         </div>
       </Modal>
       <Container>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <Icon onClick={() => goTo('home')} style={{ display: 'flex', flexDirection: 'row' }}>
           <span style={{
             marginLeft: 70, paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white',
           }}
@@ -76,7 +77,7 @@ const Header = ({
           >
             ore
           </span>
-        </div>
+        </Icon>
         <SubContainer>
           {isLoggedIn ? (
             <>
