@@ -4,6 +4,7 @@ import PublicRoute from './PublicRoute'
 import { ROUTE_PATHS } from '../utils/constants'
 import Home from '../containers/Home'
 import Landing from '../containers/Landing'
+import UserFor from '../containers/UserFor'
 
 export const routes = {
   home: {
@@ -18,6 +19,12 @@ export const routes = {
     component: Landing,
     exact: true,
   },
+  userFor: {
+    path: ROUTE_PATHS.USERFOR,
+    routeComponent: PublicRoute,
+    component: UserFor,
+    exact: true,
+  }
 }
 
 export const renderRoutes = Object.entries(routes)

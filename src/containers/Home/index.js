@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Button from '../../components/Button'
@@ -10,10 +11,14 @@ import { MiddleContainer, BrownContainer, Logo1, Logo2, Title, Box, Subtitle, } 
 const Home = () => {
   const [modalVis, setModalVis] = useState(false)
   const [data, setData] = useState('')
+  const history = useHistory()
+  const goTo = string => {
+    history.push('/'.concat(string))
+  }
   return (
     (
       <div style={{ position: 'relative' }}>
-        <Header />
+        <Header isRec={false} />
         <MiddleContainer>
           <div style={{
             zIndex: -100, marginRight: 'auto', marginLeft: 'auto',
@@ -44,7 +49,7 @@ const Home = () => {
               alt="a cat lol"
             />
                 <span style={{margin: '2vh auto' }}>
-                  <Button width='30vh' text="get started?" />
+                  <Button width='30vh' text="get started?" onClick={() => goTo('recs')} />
                   </span>
                 </BrownContainer>
               </>
