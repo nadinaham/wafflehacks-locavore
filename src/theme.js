@@ -3,12 +3,13 @@
 const theme = {
   colors: {
     gold: '#FFDDA1',
-    darkBrown: '#AF6E0C',
-    periwinkle: '#D0DFE2',
-    milkChoco: '#CBAD9A',
+    darkBrown: '#AB8974',
+    periwinkle: '#D1DCD9',
+    milkChoco: '#AB8974',
+    darkChoco: '#7F5130',
     errorRed: '#E04545',
     white: 'white',
-    peach: 'F9E1D2',
+    peach: '#F9E1D2',
   },
   fonts: {
     openSans: 'Open Sans',

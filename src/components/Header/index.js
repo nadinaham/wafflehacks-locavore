@@ -6,7 +6,7 @@ import {
   Logo1,
 } from './styles'
 import Button from '../Button'
-import MASSIVE_L from '../../assets/MASSIVE_L.png'
+import LOGOSHORT from '../../assets/LOGOSHORT.png'
 import Modal from '../Modal'
 import theme from '../../theme'
 
@@ -51,20 +51,29 @@ const Header = () => {
         </div>
       </Modal>
       <Container>
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-          <div style={{ marginLeft: '3vh', width: '7vh', backgroundColor: 'pink', paddingTop: '3%', height: '12vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <span style={{ marginLeft: 70, paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white' }}>
+            Loca
+          </span>
+          <div style={{ width: '12vh', height: '12vh' }}>
             <Logo1
-              src={MASSIVE_L}
+              src={LOGOSHORT}
               alt="WH Logo"
             />
           </div>
-          <span style={{ paddingTop: '3vh', fontSize: '40px', fontFamily: 'Jost Semibold' }}>ocavore</span>
+          <span style={{ paddingTop: '2vh', fontFamily: 'Jost Semibold', fontSize: '6vh', color: 'white' }}>
+            ore
+          </span>
         </div>
         <SubContainer>
           {isLoggedIn ? (
             <>
-              <Button text="profile" width="90px" height="37px" onClick={console.log('hi')} />
-              <Button text="log out" width="90px" height="37px" onClick={console.log('hi')} />
+              <span style={{ marginLeft: 20, marginRight: 20 }}>
+                <Button text="for me" width="15vh" height="6vh" onClick={console.log('hi')} />
+              </span>
+              <span style={{ marginRight: 70 }}>
+                <Button text="log out" width="15vh" height="6vh" onClick={console.log('hi')} />
+              </span>
             </>
           ) : (
             <>

@@ -4,7 +4,7 @@ import theme from '../../theme'
 export const ButtonBox = styled.button`
   width: ${props => props.width};
   height: ${props => props.height};
-  background-color: #965829;
+  background-color: ${theme.colors.darkChoco};
   border: none;
   border-radius: 5px;
   @media (max-width: 449px) {
@@ -17,9 +17,9 @@ export const ButtonBox = styled.button`
 
 export const ButtonText = styled.p`
   font-family: ${theme.fonts.jostSemi};
-  font-size: 20px;
+  font-size: 2.5vh;
   font-weight: 700;
-  color: white;
+  color: ${theme.colors.peach};
   @media (max-width: 449px) {
     font-size: 10px;
     font-weight: 700;

@@ -1,15 +1,17 @@
 import styled from 'styled-components'
+import theme from '../../theme'
 
 export const Container = styled.div`
-  background: #D0DFE2;
+  background: ${theme.colors.milkChoco};
   position: sticky;
-  height: 18vh;
+  height: 15vh;
   width: 100vw;
   top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
   @media (max-width: 500px) {
       box-sizing: border-box;
   }
@@ -57,7 +59,6 @@ export const StyledRectangle = styled.div`
 `
 
 export const Logo1 = styled.img`
-  margin-left: 7.5%;
   width: 100%;
   height: auto;
   background: ${props => props.background};
